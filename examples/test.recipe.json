@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "task": "Test the Lantern storage change using the testing checklist.",
+  "sources": [
+    {"path": "AGENTS.md", "target": "AGENTS.md"},
+    {"path": ".claude/skills/testing/SKILL.md", "target": ".claude/skills/testing/SKILL.md"},
+    {"path": ".claude/skills/testing/assets/checklist.txt", "target": ".claude/skills/testing/assets/checklist.txt"}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "task": "Review the Lantern storage change; report risks with source evidence.",
+  "sources": [
+    {"path": "AGENTS.md", "target": "AGENTS.md"},
+    {"path": ".claude/agents/reviewer.md", "target": ".claude/agents/reviewer.md"}
+  ]
+}
