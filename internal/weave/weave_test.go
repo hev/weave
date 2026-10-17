@@ -179,6 +179,9 @@ func TestManifestOrder(t *testing.T) {
 	a, _ := Build(root, r)
 	r.Sources[0], r.Sources[1] = r.Sources[1], r.Sources[0]
 	b, _ := Build(root, r)
+	if len(Diff(a, b).Changes) == 0 {
+		t.Fatal("reorder missing from diff")
+	}
 	if a.Digest == b.Digest {
 		t.Fatal("order not hashed")
 	}

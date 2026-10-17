@@ -342,6 +342,16 @@ func Diff(a, b Bundle) Difference {
 	if a.Task != b.Task {
 		d.Changes = append(d.Changes, Change{"Assignment", a.Task, b.Task, "changed"})
 	}
+	beforeOrder, afterOrder := []string{}, []string{}
+	for _, f := range a.Files {
+		beforeOrder = append(beforeOrder, f.Target)
+	}
+	for _, f := range b.Files {
+		afterOrder = append(afterOrder, f.Target)
+	}
+	if strings.Join(beforeOrder, "\n") != strings.Join(afterOrder, "\n") {
+		d.Changes = append(d.Changes, Change{"Source ordering", strings.Join(beforeOrder, "\n"), strings.Join(afterOrder, "\n"), "changed"})
+	}
 	order := []string{}
 	for k := range keys {
 		order = append(order, k)
