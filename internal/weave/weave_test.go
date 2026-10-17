@@ -187,3 +187,19 @@ func TestManifestOrder(t *testing.T) {
 		t.Fatal(e)
 	}
 }
+
+func TestRelocatedSources(t *testing.T) {
+	a, b := fixture(t), fixture(t)
+	r, _ := Discover(a)
+	x, e := Build(a, r)
+	if e != nil {
+		t.Fatal(e)
+	}
+	y, e := Build(b, r)
+	if e != nil {
+		t.Fatal(e)
+	}
+	if !bytes.Equal(encode(x), encode(y)) {
+		t.Fatal("bundle embeds environment-dependent paths")
+	}
+}

@@ -90,10 +90,10 @@ func safe(root, p string) (string, error) {
 		cur = filepath.Join(cur, part)
 		st, e := os.Lstat(cur)
 		if e != nil {
-			return "", e
+			return "", fmt.Errorf("cannot access source %s", p)
 		}
 		if st.Mode()&os.ModeSymlink != 0 {
-			return "", fmt.Errorf("symlink refused: %s", cur)
+			return "", fmt.Errorf("symlink refused in source path: %s", p)
 		}
 	}
 	return cur, nil
